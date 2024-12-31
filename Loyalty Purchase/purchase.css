@@ -1,0 +1,314 @@
+/* Main Purchase Section */
+.purchase-main {
+  width: 900px; /* Set a fixed width */
+  margin: 40px auto; /* Center the container horizontally */
+  padding: 30px 20px; /* Compact padding */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the top */
+  backdrop-filter: blur(8px); /* Glassmorphism effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white background */
+  height: auto; /* Auto height based on content */
+  min-height: 500px; /* Minimum height */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title styling */
+.purchase-loyalty h2 {
+  font-size: 2rem; /* Adjust font size */
+  font-weight: bold;
+  margin-bottom: 15px; /* Margin below the title */
+  color: #000000; /* Black color */
+}
+
+/* Paragraph styling */
+.purchase-loyalty p {
+  font-size: 1rem; /* Font size */
+  margin-bottom: 20px; /* Margin below text */
+  color: #000000;
+}
+
+/* Layout for membership cards */
+.membership-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive columns */
+  gap: 15px; /* Space between cards */
+  justify-items: center;
+  width: 100%;
+}
+
+/* Positioning of the chip on each card */
+.card-chip {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 40px; /* Chip size */
+  height: auto;
+  z-index: 10; /* Ensure chip stays on top */
+}
+
+/* Styling for each membership card */
+.membership-card {
+  position: relative;
+  background: linear-gradient(135deg, #e0e0e0, #f4f4f4); /* Subtle gradient */
+  border-radius: 12px; /* Rounded corners */
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Shadow for card */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  overflow: hidden;
+}
+
+/* Chip style for card */
+.chip {
+  position: absolute;
+  width: 60px;
+  height: 45px;
+  top: -10px;
+  right: 10px; /* Top-right positioning */
+  background: linear-gradient(135deg, hsl(63, 57%, 34%) 0%, hsl(51, 100%, 50%) 44%, hsl(53, 100%, 50%) 100%); /* Gradient background */
+  border-radius: 8px; /* Rounded corners */
+  z-index: 10; /* Ensure chip stays on top */
+}
+
+/* Card content styling */
+.card-content {
+  position: relative;
+  text-align: left; /* Left-align text */
+  padding: 15px; /* Padding inside card */
+}
+
+/* Title inside the card */
+.card-content h3 {
+  font-family: "Orbitron", serif; /* Unique font style */
+  font-size: 1.5rem; /* Title font size */
+  color: #1E3A8A; /* Ocean Blue color */
+  position: absolute;
+  top: 15px;
+  left: 15px; /* Position title in top-left */
+  margin: 0;
+}
+
+/* Card description styling */
+.card-content .description {
+  font-family: "Courier New", monospace; /* Monospaced font for description */
+  font-size: 1.2rem; /* Adjusted font size */
+  letter-spacing: 2px; /* Spacing for card number look */
+  color: #333; /* Neutral color */
+  text-align: center; /* Centered text */
+  margin-top: 50px; /* Margin from top */
+  display: block;
+}
+
+/* Price styling */
+.card-content .price {
+  font-size: 20px; /* Price font size */
+  color: #1E3A8A; /* Ocean Blue */
+  font-weight: 700;
+  position: absolute;
+  bottom: -15px;
+  right: 15px; /* Bottom-right positioning */
+}
+
+/* Hover effect for membership card */
+.membership-card:hover {
+  transform: translateY(-5px); /* Lift card effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Bronze card style */
+.membership-card:nth-child(1) {
+  background: linear-gradient(135deg, #cd7f32, #d29b6b, #f4a261); /* Bronze gradient */
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2), 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Silver card style */
+.membership-card:nth-child(2) {
+  background: linear-gradient(135deg, #B4B8B3, #E0E0E0, #f0f0f0); /* Silver gradient */
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.2), 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Gold card style */
+.membership-card:nth-child(3) {
+  background: linear-gradient(135deg, #d4af37, #e0c671, #f6d678); /* Gold gradient */
+  box-shadow: inset 0 0 15px rgba(255, 223, 0, 0.5), 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Diamond Blue card style */
+.membership-card:nth-child(4) {
+  background: linear-gradient(135deg, #6ec1e4, #8fd7f3, #a6c9e2); /* Diamond Blue gradient */
+  box-shadow: inset 0 0 15px rgba(173, 216, 230, 0.5), 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+.purchase-button {
+  background-color: #1E3A8A; /* Ocean Blue */
+  color: white;
+  padding: 10px 20px; /* Button padding */
+  font-size: 1rem; /* Font size */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  display: block;
+  width: auto;
+  margin-top: 20px; /* Margin from top */
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+  font-weight: 600;
+}
+
+/* Button hover effect */
+.purchase-button:hover {
+  background-color: #103B5C; /* Darker shade on hover */
+}
+
+/* Modal styles for loyalty */
+.loyalty-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999; /* Above other content */
+  left: 0;
+  top: 25%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 20px;
+}
+
+/* Modal content styling */
+.loyalty-modal-content {
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 50%; /* Modal width */
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Modal header styling */
+.loyalty-modal-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #1E3A8A;
+}
+
+/* Modal text styling */
+.loyalty-modal-content p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+}
+
+/* Modal span for highlighted text */
+.loyalty-modal-content span {
+  font-weight: bold;
+  color: #1E3A8A;
+}
+
+/* Close button styling */
+.loyalty-modal-content .close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.loyalty-modal-content .close:hover,
+.loyalty-modal-content .close:focus {
+  color: #333;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .loyalty-modal-content {
+    width: 80%; /* Use more width on smaller screens */
+    padding: 20px;
+  }
+
+  .loyalty-modal-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .loyalty-modal-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loyalty-modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .loyalty-modal-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .loyalty-modal-content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Show modal when active */
+.loyalty-modal.show {
+  display: block;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .purchase-main {
+    width: 80%; /* Smaller width */
+    padding: 25px;
+    height: auto;
+    margin-top: 30px;
+  }
+
+  .membership-card {
+    width: 100%;
+  }
+
+  .purchase-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .purchase-main {
+    padding: 20px; /* Less padding */
+  }
+
+  .membership-card {
+    width: 100%;
+  }
+
+  .purchase-button {
+    width: 100%;
+  }
+}
+
+/* Hide radio button for membership selection */
+.membership-card input[type="radio"] {
+  display: none;
+}
+
+/* Add checkmark when radio button is selected */
+.membership-card input[type="radio"]:checked + label::after {
+  content: '✔'; /* Checkmark symbol */
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 2rem;
+  color: #1E3A8A;
+  transition: color 0.3s ease;
+}

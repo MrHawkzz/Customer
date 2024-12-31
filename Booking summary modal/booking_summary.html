@@ -1,0 +1,166 @@
+{% extends 'customer/custabout.html' %}
+
+{% load static %}
+
+{% block title %}Booking Summary{% endblock %}
+
+{% block about_extra %}
+<main class="booking-summary-page">
+    <div class="booking-summary-container">
+        <h1>Booking Summary</h1>
+
+        <form method="post" class="booking-summary-form">
+            {% csrf_token %}
+            
+            <!-- Cruise Details -->
+            <div class="booking-summary-section">
+                <h2>Cruise Details</h2>
+                <p><strong>Cruise Name:</strong> {{ booking.cruise.name }}</p>
+                <p><strong>Start Date:</strong> {{ booking.cruise.start_date }}</p>
+                <p><strong>End Date:</strong> {{ booking.cruise.end_date }}</p>
+                <p><strong>Destination:</strong> {{ booking.cruise.destination.name }}</p>
+                <p><strong>Room Type:</strong> {{ booking.room_type }}</p>
+            </div>
+            
+            <!-- Passenger Details -->
+            <div class="booking-summary-section">
+                <h2>Passenger Details</h2>
+                {% for passenger in booking.passengers.all %}
+                    <p>
+                        <strong>{{ passenger.first_name }} {{ passenger.last_name }}</strong> 
+                        - Age: {{ passenger.age }} | Gender: {{ passenger.gender }}
+                    </p>
+                {% endfor %}
+            </div>
+
+            <!-- Special Requests -->
+            <div class="booking-summary-section">
+                <h2>Special Requests</h2>
+                <p>{{ booking.additional_instructions|default:"None" }}</p>
+            </div>
+            
+            <!-- Loyalty Program Details -->
+            <div class="booking-summary-section">
+                <h2>Loyalty Program Details</h2>
+                {% if booking.loyalty_program_member and booking.customer.loyalty_program %}
+                    <p><strong>Loyalty Level:</strong> {{ booking.customer.loyalty_program.level }}</p>
+                    <p><strong>Loyalty Card Number:</strong> {{ booking.customer.loyalty_program.loyalty_card_number }}</p>
+                    <p><strong>Loyalty Points:</strong> {{ booking.customer.loyalty_program.points }}</p>
+                {% else %}
+                    <p class="no-loyalty">None</p>
+                {% endif %}
+            </div>
+            
+            <!-- Selected Services -->
+            <div class="booking-summary-section">
+                <h2>Selected Services</h2>
+                {% if booking.onboard_services.exists %}
+                    {% for service in booking.onboard_services.all %}
+                        <p><strong>{{ service.service_name }}</strong> - ${{ service.price|floatformat:2 }}</p>
+                    {% endfor %}
+                {% else %}
+                    <p>No additional services selected.</p>
+                {% endif %}
+            </div>
+
+            <!-- Pricing Summary -->
+            <div class="booking-summary-section">
+                <h2>Pricing Summary</h2>
+                <p><strong>Base Cruise Price:</strong> ${{ base_price|floatformat:2 }}</p>
+                <p><strong>Room Type Price:</strong> ${{ room_price|floatformat:2 }}</p>
+                <p><strong>Onboard Services Total:</strong> ${{ services_total_price|floatformat:2 }}</p>
+                <p><strong>Travel Insurance:</strong> ${{ travel_insurance_price|floatformat:2 }}</p>
+                <p><strong>Tax (10%):</strong> ${{ tax|floatformat:2 }}</p>
+                <p><strong>Discounts (Child/Elderly):</strong> -${{ discount|floatformat:2 }}</p>
+                <p><strong>Loyalty Discount:</strong> -${{ loyalty_discount|floatformat:2 }}</p>
+                <hr>
+                <h4><strong>Total Price:</strong> ${{ booking.total_price|floatformat:2 }}</h4>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-action">
+                <button type="button" id="confirm-booking-btn" class="booking-summary-btn-submit">
+                    Confirm Booking
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="bookingSuccessModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="bookingSuccessMessage">Are you sure you want to confirm this booking?</p>
+            <div class="modal-actions">
+                <button id="modalCancelBtn" class="btn-cancel">Cancel</button>
+                <button id="modalOkBtn" class="btn-ok">OK</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    /* Modal Styling */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal-content {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        width: 400px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .modal-actions {
+        margin-top: 20px;
+    }
+    .btn-cancel, .btn-ok {
+        margin: 5px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+    .btn-cancel {
+        background-color: #d9534f;
+        color: white;
+    }
+    .btn-ok {
+        background-color: #5cb85c;
+        color: white;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const confirmBookingBtn = document.getElementById('confirm-booking-btn');
+        const modal = document.getElementById('bookingSuccessModal');
+        const modalCancelBtn = document.getElementById('modalCancelBtn');
+        const modalOkBtn = document.getElementById('modalOkBtn');
+
+        // Show modal on Confirm Booking button click
+        confirmBookingBtn.addEventListener('click', function () {
+            modal.style.display = 'flex'; // Flex ensures proper alignment
+        });
+
+        // Close modal on Cancel button click
+        modalCancelBtn.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+
+        // Proceed with form submission on OK button click
+        modalOkBtn.addEventListener('click', function () {
+            modal.style.display = 'none';
+            document.querySelector('.booking-summary-form').submit();
+        });
+    });
+</script>
+{% endblock %}

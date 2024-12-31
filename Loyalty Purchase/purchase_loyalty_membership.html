@@ -1,0 +1,103 @@
+{% extends 'customer/profile.html' %}
+
+{% block title %}Purchase Loyalty Membership{% endblock %}
+
+{% block profile_extra %}
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <main class="purchase-main">
+        <div class="purchase-loyalty">
+            <h2>Purchase Loyalty Membership</h2>
+            <p>Choose a loyalty membership tier to purchase:</p>
+
+            <form method="POST" id="purchaseForm">
+            {% csrf_token %}
+            <div class="membership-cards">
+                {% for membership in memberships %}
+                <div class="membership-card">
+                    <input type="radio" id="membership_{{ membership.id }}" name="membership" value="{{ membership.id }}" required>
+                    <label for="membership_{{ membership.id }}">
+                    <div class="card-content">
+                        <div class="chip"></div>
+                        <h3>{{ membership.name }}</h3>
+                        <p class="description">{{ membership.description }}</p>
+                        <p class="price">$ {{ membership.price }}</p>
+                    </div>
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="purchase-button">Purchase Membership</button>
+            </form>
+        </div>
+
+        <!-- Modal to display card details -->
+        <div id="cardDetailsModal" class="loyalty-modal">
+            <div class="loyalty-modal-content">
+            <span class="close" onclick="closeModal('cardDetailsModal')">&times;</span>
+            <h3>Your Loyalty Card has been Created!</h3>
+            <p><strong>Card Number:</strong> <span id="cardNumber"></span></p>
+            <p><strong>Passcode:</strong> <span id="passcode"></span></p>
+            <p><strong>Loyalty Tier:</strong> <span id="tier"></span></p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Submit the purchase form via AJAX
+        document.getElementById('purchaseForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get the selected membership tier
+            const selectedMembership = document.querySelector('input[name="membership"]:checked').value;
+
+            const formData = new FormData();
+            formData.append('membership', selectedMembership);
+
+            fetch('/customer/loyalty/purchase/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Update modal content with the generated card details
+                        document.getElementById('cardNumber').textContent = data.card_number;
+                        document.getElementById('passcode').textContent = data.passcode;
+                        document.getElementById('tier').textContent = data.tier;
+
+                        // Show the modal
+                        openCardDetailsModal();
+                    } else {
+                        alert('Something went wrong! Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while processing your request.');
+                });
+        });
+
+        // Function to open the modal and redirect after a timeout
+        function openCardDetailsModal() {
+            const modal = document.getElementById("cardDetailsModal");
+            modal.style.display = "block"; // Show the modal
+
+            // Set a timer to hide the modal and redirect
+            setTimeout(() => {
+                modal.style.display = "none"; // Hide the modal
+                window.location.href = '/customer/profile/'; // Redirect to the profile page
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+
+</script>
+  
+
+{% endblock %}

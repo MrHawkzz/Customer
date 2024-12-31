@@ -1,0 +1,140 @@
+/* General Styling for add-passenger-page */
+main.add-passenger-page {
+    padding: 30px;
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+main.add-passenger-page h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #1e88e5;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Form Container */
+main.add-passenger-page .passenger-container {
+    padding: 10px;
+}
+
+main.add-passenger-page .form-field {
+    margin-bottom: 20px;
+}
+
+main.add-passenger-page .form-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+main.add-passenger-page .form-field input,
+main.add-passenger-page .form-field select {
+    width: 100%;
+    padding: 10px; /* Reduced padding to make inputs smaller */
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    height: 40px; /* Reduced height for inputs */
+}
+
+main.add-passenger-page .form-field input:focus,
+main.add-passenger-page .form-field select:focus {
+    border-color: #1e88e5;
+    background-color: #eaf3ff;
+    outline: none;
+}
+
+main.add-passenger-page .formset-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+main.add-passenger-page .formset-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Button Container */
+main.add-passenger-page .form-action {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Adjust the gap between buttons */
+    margin-top: 20px;
+}
+
+/* Buttons Styling */
+main.add-passenger-page .btn-submit,
+main.add-passenger-page #add-more {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1; /* Ensures both buttons have equal width */
+    font-weight: 500;
+}
+
+main.add-passenger-page .btn-submit {
+    background: linear-gradient(135deg, #1e88e5, #1565c0);
+    color: white;
+    box-shadow: 0 4px 8px rgba(30, 136, 229, 0.2);
+}
+
+main.add-passenger-page .btn-submit:hover {
+    background: linear-gradient(135deg, #1565c0, #1e88e5);
+    box-shadow: 0 8px 15px rgba(30, 136, 229, 0.3);
+}
+
+main.add-passenger-page #add-more {
+    background-color: #4caf50;
+    color: white;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+main.add-passenger-page #add-more:hover {
+    background-color: #388e3c;
+    box-shadow: 0 8px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main.add-passenger-page {
+        padding: 20px;
+        max-width: 100%;
+        min-height: 500px; /* Set min height for mobile */
+    }
+
+    main.add-passenger-page .form-field input,
+    main.add-passenger-page .form-field select {
+        font-size: 0.95rem;
+        height: 35px; /* Reduce input height on mobile */
+    }
+
+    main.add-passenger-page .btn-submit,
+    main.add-passenger-page #add-more {
+        font-size: 1rem;
+    }
+
+    main.add-passenger-page .form-action {
+        flex-direction: column;
+        gap: 20px; /* Increase gap on smaller screens */
+    }
+}
