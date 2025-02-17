@@ -1,0 +1,539 @@
+/* Feedback and Reviews Page Styles */
+.feedback-container {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    gap: 20px;
+    margin: 40px auto;
+    margin-left: 30%;
+    max-width: 1200px;
+    min-height: 80vh;
+}
+
+/* Main Feedback Content */
+.feedback-main {
+    flex: 1;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Feedback Header */
+.feedback-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Feedback Form */
+.feedback-form {
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels */
+.feedback-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Form Inputs */
+.feedback-form input,
+.feedback-form textarea,
+.feedback-form select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 12px;
+    width: 100%;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Input Focus Effect */
+.feedback-form input:focus,
+.feedback-form textarea:focus,
+.feedback-form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit Button */
+.feedback-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    width: 25%;
+    margin-left: 38%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.feedback-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.feedback-all-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    margin-left: 38%;
+    border: none;
+    width: 25%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.feedback-all-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Feedback List */
+
+.feedback-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.feedback-list li {
+    background: white;
+    border-radius: 20px; /* Increased border-radius */
+    padding: 20px;
+    list-style: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #4facfe;
+}
+
+.feedback-list li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(79, 172, 254, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border-radius: 20px; /* Match the card's border-radius */
+}
+
+.feedback-list li:hover::before {
+    opacity: 1;
+}
+
+.feedback-list li h4 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    position: relative;
+    padding-left: 30px;
+    z-index: 2;
+}
+
+.feedback-list li h4::before {
+    content: "👤";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+.feedback-list li p {
+    color: #34495e;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 8px 0;
+    z-index: 2;
+}
+
+.feedback-list li p strong {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.feedback-list li p:nth-of-type(1) {
+    padding-left: 28px;
+    position: relative;
+}
+
+.feedback-list li p:nth-of-type(1)::before {
+    content: "🚢";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+.feedback-list li p:last-of-type {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    padding: 8px 12px;
+    border-radius: 20px; /* Increased border-radius */
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 500;
+    color: white;
+    z-index: 2;
+}
+
+.feedback-list li p:last-of-type::before {
+    content: "⭐";
+    margin-right: 5px;
+}
+
+.feedback-list li:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px; 
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
+    z-index: 1;
+}
+
+.feedback-list li::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 60px;
+    height: 60px;
+    background: rgba(79, 172, 254, 0.05);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.feedback-list li:hover::after {
+    transform: scale(1.5);
+}
+
+/* Star Rating Container */
+.star-rating {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Stars Layout */
+.stars {
+    display: flex;
+    gap: 30px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+/* Empty Star Style */
+.star {
+    font-size: 3rem;
+    color: #ccc; /* Default empty star */
+    display: inline-block;
+    width: 40px;
+    height: 50px;
+    position: relative;
+}
+
+/* Full Star */
+.star::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    color: inherit;
+}
+
+/* Half Star Effect (Left Side) */
+.star::after {
+    content: "★";
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: inherit;
+    opacity: 0;
+}
+
+/* Hover Effects */
+.star.hover-full::before,
+.star.selected-full::before {
+    color: #f1c40f; /* Full Star Color */
+}
+
+.star.hover-half::after,
+.star.selected-half::after {
+    color: #f1c40f; /* Half Star Color */
+    opacity: 1;
+}
+
+/* Rating Display */
+.rating-display {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .feedback-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feedback-sidebar {
+        width: 100%;
+        order: 2;
+    }
+
+    .feedback-main {
+        width: 100%;
+    }
+
+    .feedback-form {
+        width: 90%;
+        left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .star-rating label {
+        font-size: 2rem;
+    }
+}
+
+/* Feedback Modal */
+.feedback-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.feedback-modal-content {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    margin: 5% auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(-20%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Modal Header */
+.feedback-modal-header {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #4facfe;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Close Button */
+.feedback-close {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    line-height: 1;
+}
+
+.feedback-close:hover {
+    color: #4facfe;
+    transform: scale(1.1);
+}
+
+/* Feedback Items */
+.feedback-modal-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feedback-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(79, 172, 254, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.15);
+    border-color: #4facfe;
+}
+
+.feedback-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #4facfe, #00f2fe);
+    opacity: 0.8;
+}
+
+.feedback-card h4 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-left: 30px;
+    position: relative;
+}
+
+.feedback-card h4::before {
+    content: "💬";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+
+.feedback-card p {
+    color: #34495e;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.feedback-card p strong {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Cruise Info */
+.feedback-cruise {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.feedback-cruise::before {
+    content: "🚢";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+/* Rating Styling */
+.feedback-rating {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.feedback-rating::before {
+    content: "⭐";
+    margin-right: 8px;
+    filter: brightness(1.2);
+}
+
+/* Scrollbar Styling */
+.feedback-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.feedback-modal-content::-webkit-scrollbar-track {
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: 4px;
+}
+
+.feedback-modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(#4facfe, #00f2fe);
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .feedback-modal-content {
+        width: 90%;
+        padding: 20px;
+        margin: 10% auto;
+    }
+    
+    .feedback-modal-header {
+        font-size: 1.5rem;
+        padding-bottom: 12px;
+    }
+    
+    .feedback-close {
+        top: 15px;
+        right: 20px;
+        font-size: 1.8rem;
+    }
+    
+    .feedback-card {
+        padding: 15px;
+    }
+}

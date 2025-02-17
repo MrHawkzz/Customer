@@ -1,0 +1,196 @@
+/* ========================
+   Original & Additional Combined Styles
+   ======================== */
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../assets/bgq.png') no-repeat center center/cover;
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Login Container */
+.login {
+    width: 420px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 30px 40px 50px 40px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Fade-in Animation */
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Header */
+.login .head h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    padding: 20px 0;
+    margin: -30px -40px 25px -40px;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Form Labels */
+.login .form label {
+    display: block;
+    font-size: 16px;
+    color: #ddd;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+/* Input Fields */
+.login .form input[type="email"],
+.login .form input[type="password"] {
+    width: 92%;
+    height: 50px;
+    padding: 0 22px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+/* Border Animation on Input Focus */
+.login .form input::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 25px;
+    border: 2px solid rgba(52, 152, 219, 0.5);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.login .form input:focus::after {
+    width: 100%;
+}
+
+.login .form input[type="email"]:focus,
+.login .form input[type="password"]:focus {
+    border-color: #3498db;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 0px 10px rgba(52, 152, 219, 0.5), 0px 0px 15px rgba(52, 152, 219, 0.7);
+}
+
+/* Login Button */
+.login .form .loginbtn {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login .form .loginbtn:hover {
+    transform: scale(0.98);
+    background: linear-gradient(135deg, #2980b9, #2471a3);
+}
+
+.login .form .loginbtn:active {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #2471a3, #1f618d);
+}
+
+/* Placeholder Styling */
+.login .form input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+    font-style: normal;
+}
+
+/* Additional Hover Effect for the Login Container */
+.login:hover {
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Custom Checkbox Styling (if needed for additional form elements) */
+.login .form .custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.login .form .custom-checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.login .form .custom-checkbox input[type="checkbox"]:checked {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.login .form .custom-checkbox input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login {
+        width: 90%;
+        padding: 25px 20px 40px 20px;
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .login .head h1 {
+        font-size: 30px;
+    }
+
+    .login .form input[type="email"],
+    .login .form input[type="password"] {
+        font-size: 15px;
+    }
+
+    .login .form .loginbtn {
+        font-size: 17px;
+    }
+}
+
+/* Fade-in Animation Keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
